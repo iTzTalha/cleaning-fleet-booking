@@ -1,0 +1,22 @@
+# Build output
+target/
+
+# VCS
+.git/
+.gitignore
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# OS / logs
+.DS_Store
+*.log
+
+# Tests
+src/test/
+
+# Docs & local orchestration
+README.md
+docker-compose.yml
