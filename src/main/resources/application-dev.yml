@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+springdoc:
+  swagger-ui:
+    enabled: true
+
+app:
+  seed:
+    enabled: true
