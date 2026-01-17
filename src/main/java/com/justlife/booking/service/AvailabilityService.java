@@ -12,7 +12,6 @@ import com.justlife.booking.model.Vehicle;
 import com.justlife.booking.repository.BookingCleanerRepository;
 import com.justlife.booking.repository.CleanerRepository;
 import com.justlife.booking.time.TimeProvider;
-import com.justlife.booking.util.SchedulingUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,10 +35,7 @@ public class AvailabilityService {
     public List<VehicleDailyAvailabilityDto> getDailyAvailabilityByVehicle(
             LocalDate date
     ) {
-        if (!SchedulingUtil.isWorkingDay(
-                date.getDayOfWeek(),
-                schedulingConfig.nonWorkingDay()
-        )) {
+        if (!schedulingConfig.isWorkingDay(date.getDayOfWeek())) {
             throw new IllegalArgumentException("Non-working day");
         }
 
@@ -260,7 +256,7 @@ public class AvailabilityService {
             throw new IllegalArgumentException("Cannot check availability for past dates");
         }
 
-        if (!SchedulingUtil.isWorkingDay(date.getDayOfWeek(), schedulingConfig.nonWorkingDay())) {
+        if (!schedulingConfig.isWorkingDay(date.getDayOfWeek())) {
             throw new IllegalArgumentException("Cleaners do not work on Fridays");
         }
 

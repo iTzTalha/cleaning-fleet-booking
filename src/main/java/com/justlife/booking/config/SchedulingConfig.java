@@ -14,6 +14,12 @@ public record SchedulingConfig(
         DayOfWeek nonWorkingDay,
         Defaults defaults
 ) {
+
+    public boolean isWorkingDay(DayOfWeek day) {
+        return day != nonWorkingDay;
+    }
+
     public record WorkingHours(LocalTime start, LocalTime end) {}
+
     public record Defaults(int maxCleanerPerVehicle) {}
 }

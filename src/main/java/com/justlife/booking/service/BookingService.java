@@ -10,7 +10,6 @@ import com.justlife.booking.repository.BookingCleanerRepository;
 import com.justlife.booking.repository.BookingRepository;
 import com.justlife.booking.repository.CleanerRepository;
 import com.justlife.booking.time.TimeProvider;
-import com.justlife.booking.util.SchedulingUtil;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -319,10 +318,7 @@ public class BookingService {
             Integer cleanerCount
     ) {
         if (date != null) {
-            if (!SchedulingUtil.isWorkingDay(
-                    date.getDayOfWeek(),
-                    schedulingConfig.nonWorkingDay()
-            )) {
+            if (!schedulingConfig.isWorkingDay(date.getDayOfWeek())) {
                 throw new IllegalArgumentException("Non-working day");
             }
 
