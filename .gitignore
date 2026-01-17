@@ -31,3 +31,20 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+*.tar
+.env
+
+# Spring Boot runtime logs
+logs/
+*.log
+
+# Build and cache
+*.jar
+*.war
