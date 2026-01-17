@@ -1,3 +1,37 @@
 spring:
   application:
     name: Home Cleaning Booking System
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:justlife}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: WARN
+
+app:
+  timezone: Asia/Kolkata
+  working-hours:
+    start: "08:00"
+    end: "22:00"
+  break-minutes: 30
+  non-working-day: FRIDAY
+  defaults:
+    max-cleaner-per-vehicle: 5
+    vehicle-count: 5
+
+springdoc:
+  swagger-ui:
+    enabled: false
